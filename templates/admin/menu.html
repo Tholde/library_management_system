@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #030125;">
+    <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{% url "dash" %}">
+            <div class="sidebar-brand-icon rotate-n-15"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
+                    <path d="M0 219.2v212.5c0 14.25 11.62 26.25 26.5 27C75.32 461.2 180.2 471.3 240 511.9V245.2C181.4 205.5 79.99 194.8 29.84 192C13.59 191.1 0 203.6 0 219.2zM482.2 192c-50.09 2.848-151.3 13.47-209.1 53.09C272.1 245.2 272 245.3 272 245.5v266.5c60.04-40.39 164.7-50.76 213.5-53.28C500.4 457.9 512 445.9 512 431.7V219.2C512 203.6 498.4 191.1 482.2 192zM352 96c0-53-43-96-96-96S160 43 160 96s43 96 96 96S352 149 352 96z"></path>
+                </svg></div>
+            <div class="sidebar-brand-text mx-3"><span style="font-family: Nunito, sans-serif;">Library<br>management</span></div>
+        </a>
+        <hr class="sidebar-divider my-0">
+        <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "dash_admin" %}">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span style="font-family: Nunito, sans-serif;">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "admin_profile" %}">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "librarian" %}">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Manage Librarian</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "admin_manage" %}">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Manage Admin</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "book" %}">
+                    <i class="fas fa-book"></i>
+                    <span>Manage Book</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "borrow" %}">
+                    <i class="fas fa-address-book"></i>
+                    <span>Manage Borrow</span>
+                </a>
+            </li>
+        </ul>
+        <div class="text-center d-none d-md-inline">
+            <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"
+      style="background: url('{% static 'assets/img/ancient-books-adorn-library-carefully-arranged-with-classics-rare-gems.jpg' %}') center / cover;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+</head>
+
+<body class="bg-gradient-primary" style="background: rgba(78,115,223,0);">
+<div class="container">
+    <div class="card shadow-lg o-hidden border-0 my-5">
+        <div class="card-body p-0">
+            <div class="row" style="padding-right: 0px;margin-right: -84px;background: #030125;">
+                <div class="col-lg-5 d-none d-lg-flex"><img src="{% static 'assets/img/3d-rendering-classic-int.jpg' %}"
+                                                            width="504" height="620"></div>
+                <div class="col-lg-6"
+                     style="background: #030125;border-width: 0px;border-radius: 12px;display: inline-flex;">
+                    <div class="p-5" style="background: #030125;">
+                        <div class="text-center">
+                            <h4 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;color: #ffffff;">
+                                <strong><span style="color: rgb(255, 255, 255); background-color: rgba(3, 1, 37, 0);">Create an Account!</span></strong>
+                            </h4>
+                        </div>
+                        <form class="user" method="post" action="{% url 'registration' %}">
+                            {% csrf_token %}
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0" style="display: inline-flex;"><input
+                                        class="form-control form-control-user" type="text" id="exampleFirstName"
+                                        placeholder="First Name" name="first_name"
+                                        style="background: transparent;display: inline-flex;position: relative;"></div>
+                                <div class="col-sm-6"><input class="form-control form-control-user" type="text"
+                                                             id="exampleLastName" placeholder="Last Name"
+                                                             name="last_name"
+                                                             style="background: transparent;display: inline-flex;position: relative;">
+                                </div>
+                            </div>
+                            <div class="mb-3"><input class="form-control form-control-user" type="email"
+                                                     id="exampleInputEmail" aria-describedby="emailHelp"
+                                                     placeholder="Email Address" name="email"
+                                                     style="background: transparent;display: inline-flex;position: relative;">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0" style="display: inline-flex;"><input
+                                        class="form-control form-control-user" type="password" id="examplePasswordInput"
+                                        placeholder="Password" name="password"
+                                        style="background: transparent;display: inline-flex;position: relative;"></div>
+                                <div class="col-sm-6" style="display: inline-flex;"><input
+                                        class="form-control form-control-user" type="password"
+                                        id="exampleRepeatPasswordInput" placeholder="Repeat Password"
+                                        name="password_repeat"
+                                        style="background: transparent;display: inline-flex;position: relative;"></div>
+                            </div>
+                            <button class="btn btn-primary active d-block btn-user w-100" data-bss-hover-animate="pulse"
+                                    type="submit"
+                                    style="background: #ffffff;border-width: 1px;border-top-color: rgb(255,255,255);border-right-color: rgb(255,255,255);border-bottom-width: 1px;border-bottom-color: rgb(255,255,255);border-left-color: rgb(255,255,255);font-family: Nunito, sans-serif;color: #030125;font-weight: bold;position: relative;">
+                                Register Account
+                            </button>
+                            <hr>
+                        </form>
+                        <div class="text-center"><a class="small" href="{% url 'forgot_password' %}"><strong>Forgot
+                            Password?</strong></a></div>
+                        <div class="text-center"><a class="small" href="{% url 'index' %}"><strong>Already have an
+                            account? Login!</strong></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/bs-init.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

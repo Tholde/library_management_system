@@ -1,0 +1,24 @@
+INSTALLATION:
+**************************************
+package list:
+pip install django #for django
+pip install psycopg2 # for postgresql
+pip install python-barcode # for barcode
+pip install xhtml2pdf # for genereate pdf
+**************************************
+SUPER AMIN WEBSITE
+username: rahalahifaliako
+password: tholde
+**************************************
+LIBRARIAN
+email: tholde.pathfinder@gmail.com
+password: tholde
+**************************************
+USER
+email: ambanimaso.society@am.mg
+password: ambanimaso
+**************************************
+ADMIN
+email: tholde.pathfinder@gmail.com
+password: rahalahifaliako123
+**************************************

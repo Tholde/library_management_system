@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Manage Borrow</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% include "admin/menu.html" %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include "admin/navbar.html" %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="font-weight: bold;">Borrow List</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold"><span style="color: rgb(3, 1, 37);">Borrow Info</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <a class="link-info" href="{% url "borrow_list_id" %}">
+                                <i class="fas fa-tasks" style="color: #030125;font-size: 27px;"></i>
+                            </a>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th style="color: #030125;text-align: center;">Book Title</th>
+                                    <th style="color: #030125;text-align: center;">User</th>
+                                    <th style="color: #030125;text-align: center;">Borrow Date</th>
+                                    <th style="color: #030125;text-align: center;">Normal Return Date</th>
+                                    <th style="color: #030125;text-align: center;">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if result_list %}
+                                    {% for i in result_list %}
+                                        <tr>
+                                            {% for j in i %}
+                                                <td style="text-align: center;">{{ j }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                </tbody>
+                                <tfoot>
+                                <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "admin/footer.html" %}
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script>
+        document.getElementById('export_pdf').addEventListener('click', function () {
+            // Send an AJAX request to the Django view for PDF generation (replace with your URL)
+            fetch('generate-pdf/', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => {
+                    // Handle success or error message (optional)
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

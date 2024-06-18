@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Manage Borrow</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css'%}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "user/menu.html" %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include "user/navbar.html" %}
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="font-weight: bold;">Borrow List</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold"><span style="color: rgb(3, 1, 37);">Borrow Info</span></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
+                                        <label class="form-label">
+                                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="color: #030125;text-align: center;">Book Title</th>
+                                            <th style="color: #030125;text-align: center;">User</th>
+                                            <th style="color: #030125;text-align: center;">Borrow Date</th>
+                                            <th style="color: #030125;text-align: center;">Normal Return Date</th>
+                                            <th style="color: #030125;text-align: center;">Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center;">jskdhgkjshdg</td>
+                                            <td style="text-align: center;">sfdlngsdkjfhg</td>
+                                            <td style="text-align: center;">gsdfgsdg</td>
+                                            <td style="text-align: center;">sdfgsdfgg</td>
+                                            <td style="text-align: center;">sgsdfgsdfgdsfg</td>
+                                            <td>
+                                                <a class="link-secondary" href="">
+                                                    <i class="fas fa-edit" style="color: #030125;"></i>
+                                                </a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a class="link-danger" href=""
+                                               onclick="return confirm('Are you sure to delete ?')">
+                                                    <i class="fas fa-trash" style="color: #030125;"></i>
+                                                </a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a class="link-secondary" href="">
+                                                    <i class="fas fa-envelope" style="color: #030125;"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "user/footer.html" %}
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+
+</html>

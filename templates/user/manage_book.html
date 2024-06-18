@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Manage Book</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% include "user/menu.html" %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include "user/navbar.html" %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;">
+                    <i class="fas fa-book"></i><span
+                        style="color: rgb(3, 1, 37);">&nbsp;Book Management</span></h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold" style="font-family: Aclonica, sans-serif;"><span
+                                style="color: rgb(3, 1, 37);">Book list</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <a class="link-info" href="{% url "add_book" %}">
+                                <i class="fas fa-plus-square" style="color: #030125;font-size: 27px;"></i>
+                            </a>
+                            <div class="col-md-6 col-lg-4 col-xl-4 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label
+                                        class="form-label">Show&nbsp;<select
+                                        class="d-inline-block form-select form-select-sm" onchange="submit()">
+                                    <option value="10" {% if items_per_page == 10 %}selected=""{% endif %}>10</option>
+                                    <option value="25" {% if items_per_page == 25 %}selected=""{% endif %}>25</option>
+                                    <option value="50" {% if items_per_page == 50 %}selected=""{% endif %}>50</option>
+                                    <option value="100" {% if items_per_page == 100 %}selected=""{% endif %}>100
+                                    </option>
+                                </select>&nbsp;</label></div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3" style="padding-left: 0px;">
+                                <div class="dropdown" style="display: flex;">
+                                    Category&nbsp;
+                                    <button class="btn btn-primary dropdown-toggle" aria-expanded="false"
+                                            data-bs-toggle="dropdown" type="button"
+                                            style="margin-left: 2px;position: relative;display: flex;padding-right: 0px;margin-right: 7px;height: 38px;width: 122.031px;background: rgb(3,1,37);">
+                                        {{ selected_category }} </button>
+                                    <div class="dropdown-menu"><a class="dropdown-item" href="?category=All">All</a>
+                                        {% for category in categories %}
+                                            <a class="dropdown-item" href="?category={{ category }}">{{ category }}</a>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-4">
+                                <form action="" method="get">
+                                    Search here by title or author and press enter to valid it&nbsp;
+                                    <input type="search"
+                                           style="border-bottom-color: rgb(3,1,37);border-radius: 10px; width: 390px;"
+                                           name="search" value="{{ search_query }}">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>EAN 13</th>
+                                    <th>Publication Year</th>
+                                    <th>Category</th>
+                                    <th style="text-align: center">Barcode</th>
+                                    <th>Created Date</th>
+                                    <th>Updated Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for book in books %}
+                                    <tr>
+                                        <td>{{ book.title }}</td>
+                                        <td>{{ book.author }}</td>
+                                        <td>EAN13-{{ book.isbn }}</td>
+                                        <td>{{ book.pub_date }}</td>
+                                        <td>{{ book.category }}</td>
+                                        <td><img src="{{ book.barcode.url }}" width="120px" height="70px"
+                                                 alt="Barcode Image"></td>
+                                        <td>{{ book.created_date|date:"Y-N-d, h:i:s A" }}</td>
+                                        <td>{{ book.updated_date|date:"Y-N-d, h:i:s A" }}</td>
+                                        <td>
+                                            <a class="link-secondary" href="{% url 'edit_book' book.id %}">
+                                                <i class="fas fa-edit" style="color: #030125;"></i>
+                                            </a>
+                                            &nbsp;
+                                            <a class="link-danger" href="{% url 'delete_book' book.id %}"
+                                               onclick="return confirm('Are you sure to delete {{ book.title }} ?')">
+                                                <i class="fas fa-trash" style="color: #030125;"></i>
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">
+                                    Showing
+                                    {{ page_data.start_index }} to {{ page_data.end_index }} of {{ total_pages }}
+                                    pages</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item {% if not has_prev %}disabled{% endif %}">
+                                            <a class="page-link" aria-label="Previous"
+                                               href="?page={{ page_data.previous_page_number }}">
+                                                <span aria-hidden="true">«</span></a>
+                                        </li>
+                                        {% for page_num in paginator.page_range %}
+                                            <li class="page-item {% if page_num == page_data.number %}active{% endif %}">
+                                                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                                        {% endfor %}
+                                        <li class="page-item {% if not has_next %}disabled{% endif %}">
+                                            <a class="page-link" aria-label="Next"
+                                               href="?page={{ page_data.next_page_number }}"><span
+                                                    aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "user/footer.html" %}
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/bs-init.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

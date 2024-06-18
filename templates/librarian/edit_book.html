@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% include "librarian/menu.html" %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include "librarian/navbar.html" %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;"><strong>Edit Book</strong></h3>
+                <div class="row mb-3">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12" style="margin-right: 151px;">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold"><span style="color: rgb(3, 1, 37);">Book Information</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-body" style="margin-right: 6px;">
+                                        <form method="post" action="{% url 'update_book' book.id %}">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="title">
+                                                            <strong><span
+                                                                    style="color: rgb(3, 1, 37);">Title</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="text" id="title"
+                                                               value="{{ book.title }}" placeholder="The boys scouts"
+                                                               name="title" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="author">
+                                                            <strong><span
+                                                                    style="color: rgb(3, 1, 37);">Author</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="text" id="author"
+                                                               value="{{ book.author }}"
+                                                               placeholder="Robert Baden Powel" name="author" required></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="publication_date">
+                                                            <strong><span
+                                                                    style="color: rgb(3, 1, 37);">Publication Year</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="number" id="publication_date"
+                                                               value="{{ book.pub_date }}" name="pub_date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="mb-3"><label class="form-label"
+                                                                             for="category"><strong><span
+                                                            style="color: rgb(3, 1, 37);">Category</span></strong></label>
+                                                        <label>
+                                                            <select class="form-select" name="category"
+                                                                    style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;" required>
+                                                                <optgroup label="Category list">
+                                                                    <option value="{{ book.category }}" selected
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        {{ book.category }}
+                                                                    </option>
+                                                                    <option value="Roman"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Roman
+                                                                    </option>
+                                                                    <option value="Philosophy"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Philosophy
+                                                                    </option>
+                                                                    <option value="Biblic"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Biblic
+                                                                    </option>
+                                                                    <option value="EWG"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        EWG
+                                                                    </option>
+                                                                    <option value="Anime"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Anime
+                                                                    </option>
+                                                                    <option value="Medecine"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Medecine
+                                                                    </option>
+                                                                    <option value="Science"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Science
+                                                                    </option>
+                                                                    <option value="Tradition"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Tradition
+                                                                    </option>
+                                                                    <option value="Dictionary"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Dictionary
+                                                                    </option>
+                                                                    <option value="Drama"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Drama
+                                                                    </option>
+                                                                    <option value="Historical"
+                                                                            style="color: #030125;font-weight: bold;border-width: 1px;border-radius: 24.6px;text-align: center;">
+                                                                        Historical
+                                                                    </option>
+                                                                </optgroup>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary btn-sm" type="submit"
+                                                        style="background: #030125;">Save Update Book
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "librarian/footer.html" %}
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

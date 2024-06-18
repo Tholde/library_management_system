@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Manage Borrow</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% include "librarian/menu.html" %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include "librarian/navbar.html" %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="font-weight: bold;">Borrow List</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold"><span style="color: rgb(3, 1, 37);">Borrow Info</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th style="color: #030125;text-align: center;">Id</th>
+                                    <th style="color: #030125;text-align: center;">Id Book</th>
+                                    <th style="color: #030125;text-align: center;">Id User</th>
+                                    <th style="color: #030125;text-align: center;">Borrow Date</th>
+                                    <th style="color: #030125;text-align: center;">Normal Return Date</th>
+                                    <th style="color: #030125;text-align: center;">Status</th>
+                                    <td style="color: #030125;text-align: center;">Note</td>
+                                    <th style="color: #030125;text-align: center;">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if borrow %}
+
+                                    {% for j in borrow %}
+                                        <tr>
+                                            <td style="text-align: center;">{{ j.id }}</td>
+                                            <td style="text-align: center;">{{ j.id_book }}</td>
+                                            <td style="text-align: center;">{{ j.id_user }}</td>
+                                            <td style="text-align: center;">{{ j.borrow_date|date:"Y-N-d, h:i:s A" }}</td>
+                                            <td style="text-align: center;">{{ j.return_date|date:"Y-N-d, h:i:s A" }}</td>
+                                            {% if j.is_return == True %}
+                                                <td style="text-align: center;">Returned</td>
+                                            {% else %}
+                                                <td style="text-align: center;">In Regression</td>
+                                            {% endif %}
+                                            <td style="text-align: center;">{{ j.note }}</td>
+                                            <td>
+                                                <a class="link-secondary" href="{% url 'edit_borrow' j.id %}">
+                                                    <i class="fas fa-edit" style="color: #030125;"></i>
+                                                </a>
+                                                &nbsp;
+                                                <a class="link-danger" href="{% url 'delete_borrow' j.id %}"
+                                                   onclick="return confirm('Are you sure to delete {{ j.id }} ?')">
+                                                    <i class="fas fa-trash" style="color: #030125;"></i>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                </tbody>
+                                <tfoot>
+                                <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "librarian/footer.html" %}
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script>
+        document.getElementById('export_pdf').addEventListener('click', function () {
+            // Send an AJAX request to the Django view for PDF generation (replace with your URL)
+            fetch('generate-pdf/', {method: 'POST'})
+                .then(response => response.text())
+                .then(data => {
+                    // Handle success or error message (optional)
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Borrow List</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    {% include "user/menu.html" %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include "user/navbar.html" %}
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;">
+                    <i class="fas fa-book"></i><span
+                        style="color: rgb(3, 1, 37);">&nbsp;Borrow List</span></h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold" style="font-family: Aclonica, sans-serif;"><span
+                                style="color: rgb(3, 1, 37);">Borrow Information</span></p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>EAN 13</th>
+                                    <th>Publication Year</th>
+                                    <th>Category</th>
+                                    <th style="text-align: center">Barcode</th>
+                                    <th>Created Date</th>
+                                    <th>Updated Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if books %}
+                                {% for book in books %}
+                                    <tr>
+                                        <td>{{ book.title }}</td>
+                                        <td>{{ book.author }}</td>
+                                        <td>EAN13-{{ book.isbn }}</td>
+                                        <td>{{ book.pub_date }}</td>
+                                        <td>{{ book.category }}</td>
+                                        <td><img src="{{ book.barcode.url }}" width="120px" height="70px"
+                                                 alt="Barcode Image"></td>
+                                        <td>{{ book.created_date|date:"Y-N-d, h:i:s A" }}</td>
+                                        <td>{{ book.updated_date|date:"Y-N-d, h:i:s A" }}</td>
+                                        <td style="text-align: center">
+                                            <a class="link-secondary" href="{% url 'return_borrow' book.id %}">
+                                                <i class="fas fa-backspace" style="color: #030125;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                {% endif %}
+                                </tbody>
+                                <tfoot>
+                                <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "user/footer.html" %}
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/bs-init.js' %}"></script>
+<script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+
+</html>

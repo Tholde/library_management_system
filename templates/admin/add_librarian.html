@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Add Librarian</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css'%}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "admin/menu.html" %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include "admin/navbar.html" %}
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;"><strong>Add Librarian</strong></h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-lg-12" style="margin-right: 151px;">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold"><span style="color: rgb(3, 1, 37);">Librarian Information</span></p>
+                                        </div>
+                                        <div class="card-body" style="margin-right: 6px;">
+                                            <form method="post" action="{% url "insert_lib" %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="address">
+                                                                <strong><span style="color: rgb(3, 1, 37);">Address</span></strong>
+                                                            </label>
+                                                            <input class="form-control" type="text" id="address" placeholder="Local Address" name="local_address" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="email">
+                                                                <strong><span style="color: rgb(3, 1, 37);">Email Address</span></strong>
+                                                            </label>
+                                                            <input class="form-control" type="email" id="email" placeholder="tholde@example.com" name="mail" required></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="first_name">
+                                                                <strong><span style="color: rgb(3, 1, 37);">First Name</span></strong>
+                                                            </label>
+                                                            <input class="form-control" type="text" id="first_name" placeholder="Tholde" name="firstname" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="last_name">
+                                                                <strong><span style="color: rgb(3, 1, 37);">Last Name</span></strong>
+                                                            </label><input class="form-control" type="text" id="last_name" placeholder="Rftn" name="lastname" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12" style="margin-bottom: 20px;">
+                                                        <label class="form-label">
+                                                            <strong><span style="color: rgb(3, 1, 37);">Password</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="password" name="password" required>
+                                                    </div>
+                                                    <div class="col" style="margin-bottom: 18px;">
+                                                        <label class="form-label">
+                                                            <strong><span style="color: rgb(3, 1, 37);">Confirm Password</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="password" name="confirm_password" required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button class="btn btn-primary btn-sm" type="submit" style="background: #030125;">
+                                                        Save Librarian
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "admin/footer.html" %}
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+
+</html>

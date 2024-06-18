@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css'%}">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include "user/menu.html" %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include "user/navbar.html" %}
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="font-family: Aclonica, sans-serif;font-weight: bold;"><span style="color: rgb(3, 1, 37);">Profile</span></h3>
+                    <div class="row mb-3">
+                            <div class="row">
+                                <div class="col-lg-12 col-xl-12">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold" style="font-family: Aclonica, sans-serif;">
+                                                <span style="color: rgb(3, 1, 37);">User Information</span>
+                                            </p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="post" action="{% url "update_user_profile" %}">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="address">
+                                                            <strong>Address</strong>
+                                                        </label>
+                                                            <input class="form-control" type="text" id="address" value="{{ user.address }}" placeholder="Sambaina" name="addres" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="email">
+                                                                <strong>Email Address</strong>
+                                                            </label>
+                                                            <input class="form-control" type="email" id="email" value="{{ user.mail }}" placeholder="librarian@example.com" name="mail" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="first_name">
+                                                                <strong>First Name</strong>
+                                                            </label>
+                                                            <input class="form-control" type="text" id="first_name" value="{{ user.firstname }}" placeholder="Rakoto" name="first_name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="last_name">
+                                                                <strong>Last Name</strong>
+                                                            </label>
+                                                            <input class="form-control" type="text" id="last_name" value="{{ user.lastname }}" placeholder="Zafy" name="last_name">
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-lg-12" style="margin-bottom: 20px;">
+                                                        <label class="form-label">
+                                                            <strong><span style="color: rgb(3, 1, 37);">Password</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="password" name="password" required>
+                                                    </div>
+                                                    <div class="col" style="margin-bottom: 18px;">
+                                                        <label class="form-label">
+                                                            <strong><span style="color: rgb(3, 1, 37);">Confirm Password</span></strong>
+                                                        </label>
+                                                        <input class="form-control" type="password"name="confirm_password" required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button class="btn btn-primary btn-sm" type="submit" style="background: #030125;font-weight: bold;margin-right: 36px;">
+                                                        Save Settings
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="address" style="font-family: Aclonica, sans-serif;">
+                                                        <strong><span style="color: rgb(3, 1, 37);">DATE</span></strong>
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="city">
+                                                                <strong>Created Date</strong>
+                                                            </label>
+                                                        </div>
+                                                        <p>{{ lbr.created_date|date:"Y-N-d, h:i:s A" }}</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="country">
+                                                                <strong>Updated Date</strong>
+                                                            </label>
+                                                        </div>
+                                                        <p>{{ lbr.updated_date|date:"Y-N-d, h:i:s A" }}</p>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include "user/footer.html" %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/bs-init.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+
+</html>
