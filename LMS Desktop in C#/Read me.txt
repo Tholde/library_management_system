@@ -1,0 +1,28 @@
+Installer-o aloha azafady ilay police angrybirds eo ivelany eo mba 
+tsy hampinkorontana ilay forme rehetra ao
+
+ADMIN LOGIN
+-----------------
+username: tholde
+password: tholde2001
+
+username: rindra
+password: razafinjatovo
+
+username: admin
+password : admin123
+
+-----------------------------------------
+BIBLIOMAN LOGIN
+---------------
+username: hosea
+password: hosea1234
+
+-----------------------------------------
+USER LOGIN
+--------------
+username: tholde
+password: tholde2001
+
+username: famonjena
+password: famonjena30154

@@ -1,0 +1,19 @@
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\bin\Debug\Library Management System.exe.config
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\bin\Debug\Library Management System.exe
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\bin\Debug\Library Management System.pdb
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.csproj.SuggestedBindingRedirects.cache
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.AdminDashboard.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.AdminUpdatePassword.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.BookList.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.BorrowBook.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.CrudBiblioman.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.CrudUserSecurity.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.loginPanel.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.MenuBiblioman.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.Properties.Resources.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library_Management_System.UserDashboard.resources
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.csproj.GenerateResource.cache
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.csproj.CoreCompileInputs.cache
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.exe
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.pdb
+E:\Ministère Personnelle\C#\2023\Library Management System\Library Management System\obj\Debug\Library Management System.csproj.AssemblyReference.cache
